@@ -23,4 +23,17 @@ class SandboxController extends AbstractController
             'name' => "<b>John</b>"
         ]);
     }
+
+    public function users(): Response
+    {
+        $users = [
+            ['id' => 1, 'name' => "John Doe", 'job' => "Dev. Symfony"],
+            ['id' => 2, 'name' => "Jane Doe", 'job' => "Dev. Angular"],
+            ['id' => 3, 'name' => "Eduard Doe", 'job' => "Infographiste"],
+        ];
+
+        return $this->render('sandbox/users.phtml', [
+            'users' => $users, // je transmet à la vue la variable $users
+        ]);
+    }
 }

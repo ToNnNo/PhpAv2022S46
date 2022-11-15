@@ -1,0 +1,19 @@
+<h2>Singleton</h2>
+
+<h3>Citoyen</h3>
+<p>Laure, Marc et Marc2 sont des citoyens. La classe Citoyen n'est pas un singleton</p>
+
+<?php // == test uniquement les valeurs ?>
+<p>Marc == Laure ? <?php echo ( $marc == $laure ) ? 'Oui': 'Non'; ?></p>
+
+<?php // === test les valeurs et le type de la variable ?>
+<p>Marc === Laure ? <?php echo ( $marc === $laure ) ? 'Oui': 'Non'; ?></p>
+
+<p>Marc === Marc2 ? <?php echo ( $marc === $marc2 ) ? 'Oui': 'Non'; ?></p>
+
+<h3>Maire</h3>
+
+<p>Maire === Adjoint ? <?php echo ( $maire === $adjoint ) ? 'Oui': 'Non'; ?></p>
+
+<p>Maire: <?php echo $maire->getName(); ?></p>
+<p>Adjoint: <?php echo $adjoint->getName(); ?></p>
