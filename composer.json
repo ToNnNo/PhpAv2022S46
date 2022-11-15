@@ -1,0 +1,20 @@
+{
+  "name": "dawan-tono/formation-php-av",
+  "description": "Formation PHP Avance - Novembre 2022 S46",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ToNo (Stéphane Menut)",
+      "email": "smenut@dawan.fr"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.4",
+    "symfony/http-foundation": "^5.4"
+  }
+}

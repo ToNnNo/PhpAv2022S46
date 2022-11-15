@@ -1,0 +1,32 @@
+Connaitre la version de php dans le terminial:
+php --version ou php -v
+
+Changer la version de php dans les variables d'environnement:
+...
+
+
+Norme pour travailler en php: PSR (https://www.php-fig.org/psr/)
+
+Autoloader php -> PSR4, implémenté par composer
+    -> charger les classes php en utilisant leur namespace, quelque soit l'endroit ou la classe se trouve (avec un minimum de configuration)
+
+Composer init -> permet de créer le fichier composer.json
+Entre autre:
+ -> permet de lister les dépendances du projets
+ -> appliquer des contraintes sur la version de php ou sur les extensions php qui doivent être activées sur le serveur
+
+MVC:
+
+Model : représentation d'une table SQL (un jeux de données)
+Vue : afficher les données (HTML, CSS, JS, PHP)
+Controleur : Répartir les actions à réaliser (PHP)
+    -> ex: Pour crypter un mot de passe le controleur appelera une classe dont le travaille est de crypter
+
+composer update = mettre à jour les dépendances
+
+php --help -> dans le terminal, permet d'afficher la liste des options disponibles pour la commande php
+
+php -S localhost:8000 -> permet de créer un serveur web à l'aide de php
+
+emmet.io : https://docs.emmet.io/
+-> simplificateur d'écriture de syntaxe HTML
