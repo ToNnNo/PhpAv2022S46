@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title><?php echo $blocktitle ?? 'Welcome'; ?> :: Formation php avancé</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
 </head>
 <body>
-<h1><?php echo $blocktitle ?? 'Default title'; ?></h1>
-<hr />
-
-<?php echo $blockbody; ?>
+<div class="container">
+    <header>
+        <h1><?php echo $blocktitle ?? 'Default title'; ?></h1>
+        <hr />
+    </header>
+    <nav>
+        <a href="/">Accueil</a> -
+        <a href="/hello">Page Hello</a> -
+    </nav>
+    <main>
+        <?php echo $blockbody; ?>
+    </main>
+    <footer>
+        <hr />
+        <p>
+            Dawan FOAD - PHP Av - Novembre 2022
+        </p>
+    </footer>
+</div>
 </body>
 </html>

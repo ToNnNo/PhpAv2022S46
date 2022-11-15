@@ -17,9 +17,10 @@ class SandboxController extends AbstractController
 
     public function hello(): Response
     {
+
         return $this->render('sandbox/hello.phtml', [
             'blocktitle' => "Hello World",
-            'name' => "John"
+            'name' => "<b>John</b>"
         ]);
     }
 }

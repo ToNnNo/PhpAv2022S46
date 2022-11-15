@@ -1,4 +1,5 @@
 <?php
+// index.php = front controller
 
 require __DIR__ . "/vendor/autoload.php";
 
