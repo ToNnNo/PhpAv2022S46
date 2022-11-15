@@ -4,7 +4,7 @@ namespace App\Core;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class AbstractController
+abstract class AbstractController
 {
     public function render($template, $parameters = [], $extends = 'base.phtml'): Response
     {

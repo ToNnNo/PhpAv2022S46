@@ -21,8 +21,6 @@ class App
 
     public function run(): Response
     {
-        $response = null;
-
         try{
             $controller = $this->getController();
 
@@ -42,31 +40,39 @@ class App
         // récupérer la route de la requête
         $path = $this->request->getPathInfo();
 
-        // rechercher la route parmi celle défini dans l'application (routes.php)
+        // lister toutes les routes de l'application
         $paths = array_column($this->routes, 'route');
 
+        // rechercher la route client parmi celles définies dans l'application (routes.php)
         // sinon retourner une 404
         if( ($key = array_search($path, $paths)) === false ) {
             throw new NotFoundException("Cette route n'existe pas");
         }
 
+        // récupérer le controller associé à une route
         return $this->routes[$key]['controller'];
     }
 
     private function instanciateController(string $controller): Response
     {
-        // instancier le controller & récupérer la réponse pour la retourner
+        // spliter le controller pour en récupérer la classe et la méthode
         list($class, $method) = explode("::", $controller);
 
+        // vérifier que la classe existe, sinon erreur 500
+        // sprintf -> fait des templates de chaine de caractère
         if(!class_exists($class)) {
             throw new InternalErrorException(sprintf("La classe \"%s\" n'existe pas", $class));
         }
 
+        // vérifier que la methode existe dans la classe, sinon erreur 500
         if(!method_exists($class, $method)) {
             throw new InternalErrorException(sprintf("La method \"%s\" n'existe pas dans la classe \"%s\"", $method, $class));
         }
 
+        // instancier le controller
         $instance = new $class;
+
+        // récupérer la réponse et la retourner
         return call_user_func_array([$instance, $method], [$this->request]);
     }
 }
