@@ -6,6 +6,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 abstract class AbstractController
 {
+    private $doctrine = null;
+
+    public function getDoctrine()
+    {
+        if( null == $this->doctrine ) {
+            $this->doctrine = new Doctrine();
+        }
+
+        return $this->doctrine;
+    }
+
     public function render($template, $parameters = [], $extends = 'base.phtml'): Response
     {
         // extract => crée des variables php à partir des valeurs d'un tableau (parameters)

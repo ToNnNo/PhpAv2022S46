@@ -11,6 +11,9 @@ return [
 
     ["route" => "/pdf", "controller" => "\App\Controller\PDFController::index"],
 
+    ["route" => "/orm/example", "controller" => "\App\Controller\ORMController::example"],
+    ["route" => "/orm", "controller" => "\App\Controller\ORMController::index"],
+
     // 500
     ["route" => "/castle", "controller" => "\App\Controller\SandboxController::castle"],
     ["route" => "/user", "controller" => "\App\Controller\UserController::index"],

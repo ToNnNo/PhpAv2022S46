@@ -42,3 +42,5 @@ Le Médiator (ex: Controller)
     - Associer les données au formulaire
     - Tester la soumission du formulaire et valider les données
 
+#! (shebang) --> permet d'executer un fichier dans un terminal à l'aide d'un executable renseigné (ex: php)
+shebang ne fonctionne que sous un environnement unix !
