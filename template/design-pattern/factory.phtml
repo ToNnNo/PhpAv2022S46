@@ -1,1 +1,23 @@
-<?php
+
+<h2>Factory: PDO Connector</h2>
+
+<table style="width:75%">
+    <thead style="text-align:left">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($products as $product): ?>
+    <tr>
+        <td><?php echo $product->id; ?></td>
+        <td><?php echo $product->name; ?></td>
+        <td><?php echo $fmt->formatCurrency($product->price, "EUR"); ?></td>
+        <td><?php echo $datefmt->format(new DateTime($product->date)); ?></td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

@@ -53,10 +53,15 @@ class DesignPatternController extends AbstractController
     {
         $pdo = PDOFactory::createConnectionByEnvironnement('dev');
         $stmt = $pdo->query('select * from product');
-        var_dump($stmt->fetchAll(\PDO::FETCH_OBJ));
+        $products = $stmt->fetchAll(\PDO::FETCH_OBJ);
+
+        $fmt = new \NumberFormatter('fr_FR', \NumberFormatter::CURRENCY);
+        $datefmt = new \IntlDateFormatter('fr_FR', \IntlDateFormatter::FULL, \IntlDateFormatter::NONE);
 
         return $this->render('design-pattern/factory.phtml', [
-
+            "products" => $products,
+            "fmt" => $fmt,
+            "datefmt" => $datefmt
         ]);
     }
 

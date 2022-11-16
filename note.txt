@@ -30,3 +30,15 @@ php -S localhost:8000 -> permet de créer un serveur web à l'aide de php
 
 emmet.io : https://docs.emmet.io/
 -> simplificateur d'écriture de syntaxe HTML
+
+Les Services
+ Ce sont classes php dans lesquelles on retrouve de la logique métier (code spécifique à notre projet)
+
+Le Médiator (ex: Controller)
+ Ce sont des classes dont le role est de mettre en relation plusieurs autres objets entre eux
+ ex:
+    - Créer un formulaire
+    - Extraire des données de la bdd
+    - Associer les données au formulaire
+    - Tester la soumission du formulaire et valider les données
+
