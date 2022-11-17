@@ -17,6 +17,7 @@
     "php": "^7.4",
     "ext-pdo": "*",
     "ext-intl": "*",
+    "ext-openssl": "*",
     "symfony/http-foundation": "^5.4",
     "spipu/html2pdf": "^5.2",
     "doctrine/orm": "^2.13",
