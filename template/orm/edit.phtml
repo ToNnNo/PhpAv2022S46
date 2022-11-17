@@ -1,0 +1,19 @@
+<h2>Ajouter un produit</h2>
+
+<form method="post" action="" novalidate>
+    <input type="hidden" name="token" value="<?php echo $token; ?>" />
+    <div>
+        <label for="name">Nom</label><br />
+        <input type="text" id="name" name="name" value="<?php echo $product->getName(); ?>" />
+    </div>
+    <div>
+        <label for="price">Prix</label><br />
+        <input type="number" id="price" name="price" value="<?php echo $product->getPrice(); ?>" />
+    </div>
+    <div>
+        <label for="description">Description</label><br />
+        <textarea id="description" name="description"><?php echo $product->getDescription(); ?></textarea>
+    </div>
+
+    <button>Ajouter</button>
+</form>

@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Core\AbstractController;
 use App\Model\Product;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ORMController extends AbstractController
@@ -37,6 +39,35 @@ class ORMController extends AbstractController
 
         return $this->render('orm/index.phtml', [
             'products' => $products
+        ]);
+    }
+
+    public function add(Request $request): Response
+    {
+        $data = $request->request;
+        $product = new Product();
+        $product
+            ->setName($data->get('name'))
+            ->setPrice($data->get('price'))
+            ->setDescription($data->get('description'))
+            ->setDate(new \DateTime());
+
+        if("POST" === $request->getMethod()) {
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($product);
+            $em->flush();
+
+            return new RedirectResponse('/orm');
+        }
+
+        $token = password_hash('product_token', PASSWORD_DEFAULT);
+        session_start();
+        $_SESSION['token'] = $token;
+
+        return $this->render('orm/edit.phtml', [
+            'product' => $product,
+            'token' => $token,
         ]);
     }
 }

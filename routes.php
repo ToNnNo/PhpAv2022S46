@@ -13,6 +13,7 @@ return [
 
     ["route" => "/orm/example", "controller" => "\App\Controller\ORMController::example"],
     ["route" => "/orm", "controller" => "\App\Controller\ORMController::index"],
+    ["route" => "/orm/add", "controller" => "\App\Controller\ORMController::add"],
 
     // 500
     ["route" => "/castle", "controller" => "\App\Controller\SandboxController::castle"],
