@@ -1,0 +1,25 @@
+<h2>Cryptage</h2>
+
+<table style="width:100%">
+    <thead style="text-align: left">
+    <tr>
+        <th>ID</th>
+        <th>Message</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($secrets as $secret): ?>
+        <tr>
+            <td><?php echo $secret->getId(); ?></td>
+            <td><?php echo substr($secret->getMessage(), 0, 50); ?></td>
+            <td>
+                <a href="/crypt/read?id=<?php echo $secret->getId(); ?>">
+                    Décrypter
+                </a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+

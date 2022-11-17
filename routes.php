@@ -16,6 +16,8 @@ return [
     ["route" => "/orm/add", "controller" => "\App\Controller\ORMController::add"],
 
     ["route" => "/crypt", "controller" => "\App\Controller\CryptController::index"],
+    ["route" => "/crypt/list", "controller" => "\App\Controller\CryptController::list"],
+    ["route" => "/crypt/read", "controller" => "\App\Controller\CryptController::read"],
 
     // 500
     ["route" => "/castle", "controller" => "\App\Controller\SandboxController::castle"],

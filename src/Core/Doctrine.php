@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\ORMSetup;
 
@@ -21,7 +22,9 @@ class Doctrine
             'driver' => 'pdo_mysql',
             'user' => 'root',
             'password' => 'root',
+            // 'host' => 'locahost:3306',
             'host' => 'localhost:8889',
+            // 'dbname' => 'easyaccessenglish'
             'dbname' => 'easy-access-english'
         ];
 
@@ -37,5 +40,10 @@ class Doctrine
     public function getEntityManager(): EntityManager
     {
         return $this->entityManager;
+    }
+
+    public function getRepository($entityname): EntityRepository
+    {
+        return $this->entityManager->getRepository($entityname);
     }
 }
