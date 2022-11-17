@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Core\AbstractController;
 use App\Model\Product;
+use App\Validator\ProductValidator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,7 +45,12 @@ class ORMController extends AbstractController
 
     public function add(Request $request): Response
     {
+        // $request est une instance de la classe Request
+        // ->request est une instance de la classe InputBag
+        // ->request détient les valeurs de $_POST
+        // On met dans $data les valeurs de request (request=$_POST)
         $data = $request->request;
+        $productValidator = new ProductValidator();
         $product = new Product();
         $product
             ->setName($data->get('name'))
@@ -52,13 +58,19 @@ class ORMController extends AbstractController
             ->setDescription($data->get('description'))
             ->setDate(new \DateTime());
 
-        if("POST" === $request->getMethod()) {
+        // compare que la method HTTP est égale à POST
+        if("POST" === $request->getMethod() ) {
 
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($product);
-            $em->flush();
+            $productValidator->validate($product);
 
-            return new RedirectResponse('/orm');
+            if($productValidator->isValid()) {
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($product);
+                $em->flush();
+
+                // Fait une redirection vers une autre page
+                return new RedirectResponse('/orm');
+            }
         }
 
         $token = password_hash('product_token', PASSWORD_DEFAULT);
@@ -67,6 +79,7 @@ class ORMController extends AbstractController
 
         return $this->render('orm/edit.phtml', [
             'product' => $product,
+            'errors' => $productValidator->getError(),
             'token' => $token,
         ]);
     }
