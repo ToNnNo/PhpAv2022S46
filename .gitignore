@@ -1,6 +1,9 @@
 /.idea/
 /vendor/
 
+**/*.rsa
+**/*.rsa.pub
+
 #### MACOS
 .DS_Store
 .AppleDouble
