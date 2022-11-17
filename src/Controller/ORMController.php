@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Core\AbstractController;
 use App\Model\Product;
+use App\Service\Token;
 use App\Validator\ProductValidator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,6 +52,7 @@ class ORMController extends AbstractController
         // On met dans $data les valeurs de request (request=$_POST)
         $data = $request->request;
         $productValidator = new ProductValidator();
+        $token = new Token('product_token');
         $product = new Product();
         $product
             ->setName($data->get('name'))
@@ -58,29 +60,32 @@ class ORMController extends AbstractController
             ->setDescription($data->get('description'))
             ->setDate(new \DateTime());
 
+        $errors = [];
+
         // compare que la method HTTP est égale à POST
         if("POST" === $request->getMethod() ) {
 
-            $productValidator->validate($product);
+            if($token->isValid($data->get('token'), 'product_token')) {
+                $productValidator->validate($product);
+                $errors = $productValidator->getError();
 
-            if($productValidator->isValid()) {
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($product);
-                $em->flush();
+                if ($productValidator->isValid()) {
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $em->persist($product);
+                    $em->flush();
 
-                // Fait une redirection vers une autre page
-                return new RedirectResponse('/orm');
+                    // Fait une redirection vers une autre page
+                    return new RedirectResponse('/orm');
+                }
+            } else {
+                $errors['token'][] = "Le token n'est pas valide";
             }
         }
 
-        $token = password_hash('product_token', PASSWORD_DEFAULT);
-        session_start();
-        $_SESSION['token'] = $token;
-
         return $this->render('orm/edit.phtml', [
             'product' => $product,
-            'errors' => $productValidator->getError(),
-            'token' => $token,
+            'errors' => $errors,
+            'token' => $token->getToken()
         ]);
     }
 }

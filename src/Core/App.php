@@ -6,6 +6,7 @@ use App\Exception\InternalErrorException;
 use App\Exception\NotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class App
 {
@@ -15,6 +16,10 @@ class App
 
     public function __construct(Request $request)
     {
+        $session = new Session();
+        $session->start();
+        $request->setSession($session);
+
         $this->request = $request;
         $this->routes = require __DIR__ . "/../../routes.php";
     }
