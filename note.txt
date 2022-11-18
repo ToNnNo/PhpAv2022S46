@@ -49,6 +49,14 @@ Les webservices sont des applicatiopns qui mettent à disposition des ressources
 
 REST:
 1. S'appuie sur le protocole HTTP
+    -> affiche un code HTTP adapté à la réponse
+    ex:
+        - 200 -> Réussi: OK
+        - 204 -> Réussi: pas de contenu
+        - 400 -> Erreur: mauvaise requête
+        - 404 -> Erreur: non trouvé
+        - 405 -> Erreur: méthode non autorisé
+
 2. Utilise les urls pour accéder ou manipuler à une ressource [1 ressource = 1 url]
     ex: pour travailler avec la ressource produit
         -> lire toutes les données : /product
@@ -63,3 +71,5 @@ REST:
 Les réponses d'un webservice Rest sont au format json(*) ou xml
 
 JMS/Serializer -> permet de transformer un objet php en un objet json
+
+Pour tester une API, on peut utiliser Postman (https://www.postman.com/)

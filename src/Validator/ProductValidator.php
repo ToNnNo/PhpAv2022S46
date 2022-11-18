@@ -21,7 +21,7 @@ class ProductValidator
             $this->errors['price'][] = "Le prix doit être une valeur numérique";
         }
 
-        if( null == $name || '' == $name ) {
+        if( null == $price || '' == $price ) {
             $this->errors['price'][] = "Le prix est obligatoire";
         }
     }
