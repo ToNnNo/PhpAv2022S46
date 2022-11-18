@@ -45,6 +45,11 @@ Le Médiator (ex: Controller)
 #! (shebang) --> permet d'executer un fichier dans un terminal à l'aide d'un executable renseigné (ex: php)
 shebang ne fonctionne que sous un environnement unix !
 
+Console Doctrine: php bin/doctrine -> permet de lister toutes les commandes de doctrine dans le terminal
+
+créer les tables: php bin/doctrine orm:schema-tool:create
+mettre à jour les tables: php bin/doctrine orm:schema-tool:update --force
+
 Les webservices sont des applicatiopns qui mettent à disposition des ressources
 
 REST:
