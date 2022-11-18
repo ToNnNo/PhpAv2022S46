@@ -80,3 +80,8 @@ SQL -> MySQL, MariaDB, MSSQL, PostgresSQL
 NoSQL -> Mongodb
 |__ Structure avec des documents (Ressource)
     |__ Structure sous forme d'objet JSON
+
+
+Installer php Unit:
+ - composer require --dev phpunit/phpunit
+ -
