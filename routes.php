@@ -19,6 +19,8 @@ return [
     ["route" => "/crypt/list", "controller" => "\App\Controller\CryptController::list"],
     ["route" => "/crypt/read", "controller" => "\App\Controller\CryptController::read"],
 
+    ["route" => "/api/product", "controller" => "\App\Controller\API\ProductApiController::index"],
+
     // 500
     ["route" => "/castle", "controller" => "\App\Controller\SandboxController::castle"],
     ["route" => "/user", "controller" => "\App\Controller\UserController::index"],

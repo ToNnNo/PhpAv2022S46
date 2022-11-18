@@ -44,3 +44,22 @@ Le Médiator (ex: Controller)
 
 #! (shebang) --> permet d'executer un fichier dans un terminal à l'aide d'un executable renseigné (ex: php)
 shebang ne fonctionne que sous un environnement unix !
+
+Les webservices sont des applicatiopns qui mettent à disposition des ressources
+
+REST:
+1. S'appuie sur le protocole HTTP
+2. Utilise les urls pour accéder ou manipuler à une ressource [1 ressource = 1 url]
+    ex: pour travailler avec la ressource produit
+        -> lire toutes les données : /product
+        -> ajouter une données : /product
+        -> afficher 1 donnée : /product?id=1
+3. Utiliser les verbs HTTP pour connaitre l'action à réaliser
+    GET         -> lire
+    POST        -> ajouter
+    PUT/PATCH   -> modifier
+    DELETE      -> supprimer
+
+Les réponses d'un webservice Rest sont au format json(*) ou xml
+
+JMS/Serializer -> permet de transformer un objet php en un objet json
