@@ -73,3 +73,10 @@ Les réponses d'un webservice Rest sont au format json(*) ou xml
 JMS/Serializer -> permet de transformer un objet php en un objet json
 
 Pour tester une API, on peut utiliser Postman (https://www.postman.com/)
+
+SQL / NoSQL
+
+SQL -> MySQL, MariaDB, MSSQL, PostgresSQL
+NoSQL -> Mongodb
+|__ Structure avec des documents (Ressource)
+    |__ Structure sous forme d'objet JSON
