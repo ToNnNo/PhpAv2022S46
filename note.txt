@@ -84,4 +84,8 @@ NoSQL -> Mongodb
 
 Installer php Unit:
  - composer require --dev phpunit/phpunit
- -
+ - créer le fichier de config (phpunit.xml)
+ - executer les tests unitaires (dans le terminal)
+    - vendor/bin/phpunit (unix)
+    - call vendor/bin/phpunit (windows)
+
